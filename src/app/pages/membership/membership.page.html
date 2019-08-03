@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Memberships</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+
+  <ion-list *ngIf="memberships">
+    <ion-item *ngFor="let member of memberships">
+      <ion-avatar slot="start">
+        <img [src]="member.picture.thumbnail"/>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{member.name.first | titlecase }} {{member.name.last | titlecase }}</h2>
+        <p>
+            {{member.location.street | titlecase }} {{member.location.city| titlecase}}, {{member.location.state | titlecase}}
+            <br/>
+          </p>
+          <p>
+              <small><i>member since</i> {{member.registered.date | date }} </small>
+          </p>
+  
+      </ion-label>
+        <ion-badge slot="end" color="light">
+            {{member.registered.age}} <small>yrs</small>
+
+        </ion-badge>
+
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="loading memberships...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

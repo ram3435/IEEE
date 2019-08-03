@@ -1,0 +1,7 @@
+{
+  "name": "IEEE",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
